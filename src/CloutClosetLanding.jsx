@@ -197,7 +197,7 @@ const CloutClosetLanding = () => {
         {/* Clean Header - Mobile Optimized */}
         <div className="fixed  left-0 right-0 top-0 z-50">
           <nav
-            className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center py-4 sm:py-7 px-3 sm:p-6 
+            className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center py-5 sm:py-7 px-3 sm:p-6 
   bg-white/30 backdrop-blur-md border-b border-white/20"
           >
             <a
@@ -211,7 +211,7 @@ const CloutClosetLanding = () => {
         </div>
 
         {/* Hero Section - Mobile Optimized */}
-        <header className="text-center sm:mt-20 mt-16 mb-16 sm:mb-24 min-h-[60vh] sm:min-h-[70vh] flex flex-col justify-center px-2">
+        <header className="text-center sm:mt-40 mt-32 mb-16 sm:mb-24 min-h-[60vh] sm:min-h-[70vh] flex flex-col justify-center">
           <div
             className={`transition-all duration-800 ${
               heroLoaded ? "animate-fadeInUp" : "opacity-0 translate-y-4"
@@ -228,7 +228,7 @@ const CloutClosetLanding = () => {
                 heroLoaded ? "animate-fadeInUp" : "opacity-0 translate-y-4"
               }`}
             >
-              <p className="text-base sm:text-xl text-stone-600 max-w-xl sm:max-w-2xl mx-auto leading-relaxed mb-12 sm:mb-16 font-light px-4">
+              <p className="text-base sm:text-xl text-stone-600 max-w-xl sm:max-w-2xl mx-auto leading-relaxed mb-12 sm:mb-16 font-light px-1">
                 Shop pre-loved fashion from your favorite creators. Authentic
                 pieces, affordable prices, exclusive access.
               </p>
