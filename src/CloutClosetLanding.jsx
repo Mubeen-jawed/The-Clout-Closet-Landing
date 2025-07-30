@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import Logo from "./assets/Logo.png";
+import LogoTCC from "./assets/Logo-TCC.png";
 
 const CloutClosetLanding = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +12,7 @@ const CloutClosetLanding = () => {
   const [swipeRevealed, setSwipeRevealed] = useState(false);
   const [waitlistRevealed, setWaitlistRevealed] = useState(false);
   const [currentInfluencer, setCurrentInfluencer] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const swipeRef = useRef(null);
 
@@ -102,6 +105,19 @@ const CloutClosetLanding = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Navbar Logo change
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 0); // if user has scrolled down at all
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleEmailSubmit = () => {
     if (email && !emailList.includes(email)) {
       // Save to local state
@@ -126,9 +142,15 @@ const CloutClosetLanding = () => {
     }
   };
 
+  {
+    /* F5F2EF
+              ED9449
+              2E2D2c */
+  }
+
   const FlipNumber = ({ number, label }) => (
-    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-6 text-center min-w-[70px] sm:min-w-[90px] shadow-sm border border-stone-200">
-      <div className="text-xl sm:text-3xl font-bold text-stone-700 mb-1">
+    <div className="bg-[#F5F2EF] backdrop-blur-sm rounded-xl p-3 sm:p-6 text-center min-w-[70px] sm:min-w-[90px] shadow-sm border border-stone-200">
+      <div className="text-xl sm:text-3xl font-bold text-[#2E2D2c] mb-1">
         {number}
       </div>
       <div className="text-xs text-stone-500 uppercase tracking-wider font-medium">
@@ -155,7 +177,7 @@ const CloutClosetLanding = () => {
   );
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 relative">
+    <div className="min-h-screen bg-[#F5F2EF] text-stone-800 relative">
       {/* Custom Styles */}
       <style jsx>{`
         @keyframes fadeInUp {
@@ -195,21 +217,25 @@ const CloutClosetLanding = () => {
 
       <div className="container mx-auto px-3 sm:px-6 py-4 sm:py-8">
         {/* Clean Header - Mobile Optimized */}
-        <div className="fixed  left-0 right-0 top-0 z-50">
+        <div className="fixed left-0 right-0 top-0 z-50">
           <nav
-            className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center py-5 sm:py-7 px-3 sm:p-6 
-  bg-white/30 backdrop-blur-md border-b border-white/20"
+            className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-3 sm:p-6 
+        bg-[#F5F2EF] backdrop-blur-md border-b border-white/20 ${
+          isScrolled ? "py-1 sm:py-1" : "py-2 sm:py-2"
+        }`}
           >
-            <a
-              href="/"
-              className="text-xl sm:text-2xl font-bold text-stone-800"
-            >
-              The Clout Closet
+            <a href="/">
+              <img
+                className={`${
+                  isScrolled ? "sm:w-16 w-14" : "sm:w-24 w-20"
+                } transition-all duration-200`}
+                src={isScrolled ? Logo : LogoTCC}
+                alt="Logo"
+              />
             </a>
             <div className="text-xs sm:text-sm text-stone-500">Coming Soon</div>
           </nav>
         </div>
-
         {/* Hero Section - Mobile Optimized */}
         <header className="text-center sm:mt-40 mt-32 mb-16 sm:mb-24 min-h-[60vh] sm:min-h-[70vh] flex flex-col justify-center">
           <div
@@ -220,7 +246,9 @@ const CloutClosetLanding = () => {
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-light text-stone-800 mb-6 sm:mb-8 leading-tight px-4">
               Curated Fashion
               <br />
-              <span className="font-medium">From Influencers</span>
+              <span className="font-medium text-[#ED9449]">
+                From Influencers
+              </span>
             </h1>
 
             <div
@@ -236,7 +264,7 @@ const CloutClosetLanding = () => {
 
             {/* Clean Countdown - Mobile First */}
             <div
-              className={`bg-white rounded-xl sm:rounded-2xl p-6 sm:p-10 mb-12 sm:mb-20 border border-stone-200 shadow-sm transition-all duration-800  ${
+              className={`bg-[#F5F2EF] rounded-xl sm:rounded-2xl p-6 sm:p-10 mb-12 sm:mb-20 border border-stone-200 shadow-sm transition-all duration-800  ${
                 swipeRevealed
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-4"
@@ -263,16 +291,16 @@ const CloutClosetLanding = () => {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <div className="bg-stone-800 rounded-xl sm:rounded-2xl p-6 sm:p-12 text-center shadow-lg relative overflow-hidden">
+              <div className="bg-[#2E2D2c] rounded-xl sm:rounded-2xl p-6 sm:p-12 text-center shadow-lg relative overflow-hidden">
                 {/* Floating Fashion Icons Background */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                   {/* Top Row Icons */}
                   <div
-                    className="absolute top-4 left-4 opacity-10 animate-pulse"
+                    className="absolute top-4 left-4 opacity-10 "
                     style={{ animationDelay: "0s" }}
                   >
                     <svg
-                      className="w-6 h-6 sm:w-8 sm:h-8 text-white"
+                      className="w-6 h-6 sm:w-8 sm:h-8 text-[#ED9449] animate-pulse"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -285,7 +313,7 @@ const CloutClosetLanding = () => {
                     style={{ animationDelay: "1s" }}
                   >
                     <svg
-                      className="w-5 h-5 sm:w-7 sm:h-7 text-white animate-pulse"
+                      className="w-5 h-5 sm:w-7 sm:h-7 text-[#ED9449] animate-pulse"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -305,7 +333,7 @@ const CloutClosetLanding = () => {
                     style={{ animationDelay: "2s" }}
                   >
                     <svg
-                      className="w-7 h-7 sm:w-10 sm:h-10 text-white animate-pulse"
+                      className="w-7 h-7 sm:w-10 sm:h-10 text-[#ED9449] animate-pulse"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -324,7 +352,7 @@ const CloutClosetLanding = () => {
                     style={{ animationDelay: "3s" }}
                   >
                     <svg
-                      className="w-4 h-4 sm:w-6 sm:h-6 text-white animate-pulse"
+                      className="w-4 h-4 sm:w-6 sm:h-6 text-[#ED9449] animate-pulse"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -338,7 +366,7 @@ const CloutClosetLanding = () => {
                     style={{ animationDelay: "4s" }}
                   >
                     <svg
-                      className="w-6 h-6 sm:w-8 sm:h-8 text-white animate-pulse"
+                      className="w-6 h-6 sm:w-8 sm:h-8 text-[#ED9449] animate-pulse"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -358,7 +386,7 @@ const CloutClosetLanding = () => {
                     style={{ animationDelay: "5s" }}
                   >
                     <svg
-                      className="w-8 h-8 sm:w-10 sm:h-10 text-white animate-pulse"
+                      className="w-8 h-8 sm:w-10 sm:h-10 text-[#ED9449] animate-pulse"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -378,7 +406,7 @@ const CloutClosetLanding = () => {
                     style={{ animationDelay: "6s" }}
                   >
                     <svg
-                      className="w-5 h-5 sm:w-7 sm:h-7 text-white animate-pulse"
+                      className="w-5 h-5 sm:w-7 sm:h-7 text-[#ED9449] animate-pulse"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -398,7 +426,7 @@ const CloutClosetLanding = () => {
                     style={{ animationDelay: "7s" }}
                   >
                     <svg
-                      className="w-6 h-6 sm:w-8 sm:h-8 text-white animate-pulse"
+                      className="w-6 h-6 sm:w-8 sm:h-8 text-[#ED9449] animate-pulse"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -418,7 +446,7 @@ const CloutClosetLanding = () => {
                     style={{ animationDelay: "8s" }}
                   >
                     <svg
-                      className="w-5 h-5 sm:w-7 sm:h-7 text-white animate-pulse"
+                      className="w-5 h-5 sm:w-7 sm:h-7 text-[#ED9449] animate-pulse"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -438,7 +466,7 @@ const CloutClosetLanding = () => {
                     style={{ animationDelay: "9s" }}
                   >
                     <svg
-                      className="w-4 h-4 sm:w-6 sm:h-6 text-white animate-pulse"
+                      className="w-4 h-4 sm:w-6 sm:h-6 text-[#ED9449] animate-pulse"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -455,10 +483,10 @@ const CloutClosetLanding = () => {
 
                 {/* Content with higher z-index */}
                 <div className="relative z-10">
-                  <h2 className="text-xl sm:text-3xl font-light mb-3 sm:mb-4 text-white">
+                  <h2 className="text-xl sm:text-3xl font-light mb-2 sm:mb-4 text-[#F5F2EF]">
                     Join the Waitlist
                   </h2>
-                  <p className="text-stone-300 mb-6 sm:mb-8 text-sm sm:text-lg font-light px-2">
+                  <p className="text-[#c7c4c1] mb-6 sm:mb-8 text-sm sm:text-lg font-light px-2">
                     Get early access when we launch in September
                   </p>
 
@@ -469,14 +497,14 @@ const CloutClosetLanding = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
-                        className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-300 text-sm sm:text-base backdrop-blur-sm"
+                        className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg bg-[#2E2D2c] border border-white/20 text-white placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-300 text-sm sm:text-base backdrop-blur-sm"
                         onKeyDown={(e) =>
                           e.key === "Enter" && handleEmailSubmit()
                         }
                       />
                       <button
                         onClick={handleEmailSubmit}
-                        className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-white text-stone-800 rounded-lg font-medium hover:bg-stone-100 transform hover:scale-[1.02] transition-all duration-300 text-sm sm:text-base shadow-lg"
+                        className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-[#ED9449] text-stone-800 rounded-lg font-medium hover:bg-[#F5F2EF] active:bg-[#c9c7c4] transform hover:scale-[1.02] transition-all duration-300 text-sm sm:text-base shadow-lg"
                       >
                         Join Waitlist
                       </button>
@@ -495,7 +523,7 @@ const CloutClosetLanding = () => {
             </div>
             {/* Launch Information - Mobile Optimized */}
             <div className="text-center my-10 sm:my-20">
-              <div className="inline-block bg-stone-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium">
+              <div className="inline-block bg-stone-700 text-[#F5F2EF] px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium">
                 Launching September 2025 • Pakistan
               </div>
             </div>
@@ -536,7 +564,7 @@ const CloutClosetLanding = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="font-medium text-stone-700 mb-2 text-sm sm:text-base">
+                <h3 className="font-medium text-[#ED9449] mb-2 text-sm sm:text-base">
                   Authenticated
                 </h3>
                 <p className="text-stone-600 text-xs sm:text-sm">
@@ -559,7 +587,7 @@ const CloutClosetLanding = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="font-medium text-stone-700 mb-2 text-sm sm:text-base">
+                <h3 className="font-medium text-[#ED9449] mb-2 text-sm sm:text-base">
                   Exclusive
                 </h3>
                 <p className="text-stone-600 text-xs sm:text-sm">
@@ -582,7 +610,7 @@ const CloutClosetLanding = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="font-medium text-stone-700 mb-2 text-sm sm:text-base">
+                <h3 className="font-medium text-[#ED9449] mb-2 text-sm sm:text-base">
                   Sustainable
                 </h3>
                 <p className="text-stone-600 text-xs sm:text-sm">
@@ -601,7 +629,7 @@ const CloutClosetLanding = () => {
               : "opacity-0 translate-y-4"
           }`}
         >
-          <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-stone-200 shadow-sm">
+          <div className="bg-[#F5F2EF] rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-stone-200 shadow-sm">
             <h3 className="text-lg sm:text-xl font-medium text-center mb-4 sm:mb-6 text-stone-700">
               Featured Creators
             </h3>
