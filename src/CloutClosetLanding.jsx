@@ -645,7 +645,7 @@ const CloutClosetLanding = () => {
                 ></div>
               ))}
             </div>
-            <p className="text-center text-stone-500 text-xs sm:text-sm mt-3 sm:mt-4">
+            <p className="text-center text-stone-500 text-sm sm:text-base mt-3 sm:mt-4">
               And many more coming soon...
             </p>
           </div>
