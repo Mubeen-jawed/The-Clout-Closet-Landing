@@ -5,7 +5,7 @@ import img1 from "./assets/hania.jpg";
 import img2 from "./assets/nimal.jpg";
 import img3 from "./assets/meerub.jpg";
 import img4 from "./assets/fahad.jpg";
-import heroImg from "./assets/hero-img.webp";
+import heroImg from "./assets/hero-img.jpg";
 
 const CloutClosetLanding = () => {
   const [email, setEmail] = useState("");
@@ -183,7 +183,7 @@ const CloutClosetLanding = () => {
 
   const FlipNumber = ({ number, label, className }) => (
     <div
-      className={`${className} backdrop-blur-sm sm:rounded-xl rounded-lg py-3 px-2 sm:py-4 sm:px-3 text-center min-w-[70px] sm:min-w-[90px] shadow-sm border`}
+      className={`${className} backdrop-blur-sm sm:rounded-xl rounded-lg py-3 px-2 sm:py-4 sm:px-3 text-center min-w-[70px] sm:min-w-[90px] shadow-sm `}
     >
       <div className="text-5xl sm:text-7xl  mb-1">
         {number < 10 ? `0${number}` : number}
@@ -237,7 +237,7 @@ const CloutClosetLanding = () => {
       `}</style>
 
       {/* Hero Section with centered logo and content */}
-      <div className="hero-gradient">
+      <div className="hero-gradient" style={{ fontFamily: "inter" }}>
         {/* Header - minimized */}
         {/* <div className="flex justify-between items-center p-4 sm:p-6">
           <div className="text-xs sm:text-sm text-gray-500">Coming Soon</div>
@@ -269,20 +269,20 @@ const CloutClosetLanding = () => {
             <img
               src={LogoTCC}
               alt="The Clout Closet"
-              className="w-24 sm:w-36 "
+              className="w-[106px] sm:w-40"
             />
           </div>
 
           {/* Dark Overlay Section for Text */}
-          <div className="relative bg-[#2E2D2C]/90 py-12 flex flex-col items-center text-center">
+          <div className="relative bg-[#2E2D2C]/90 py-12 flex flex-col items-center text-center px-2">
             <h1
               className="text-4xl sm:text-6xl font-serif text-[#ED9449] mb-2"
               style={{ fontFamily: "Playfair Display" }}
             >
               COMING SOON!
             </h1>
-            <p className="text-md sm:text-xl text-[#F5F2EF] max-w-3xl mx-auto">
-              Shop your favourite influencers' closets — pre-loved fashion at
+            <p className="text-sm sm:text-xl text-[#F5F2EF] max-w-3xl mx-auto">
+              Shop your favourite influencer's closets — pre-loved fashion at
               your fingertips.
             </p>
           </div>
@@ -305,7 +305,7 @@ const CloutClosetLanding = () => {
               </h2>
               <div className="flex justify-center gap-3 sm:gap-4">
                 <FlipNumber
-                  className={`bg-[#F5F2EF] text-[#2E2D2C]`}
+                  className={`bg-[#F5F2EF] text-[#2E2D2C] border border-gray-700`}
                   number={countdown.days}
                   label="Days"
                 />
@@ -327,8 +327,7 @@ const CloutClosetLanding = () => {
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed ">
                   An exclusive platform where you can snag the pre-loved fits of
-                  top influencers — dresses, shoes, bags & more — all at
-                  affordable prices. Launching soon in Pakistan!
+                  top influencers — dresses, shoes, bags & more.
                 </p>
               </div>
             </div>
@@ -534,11 +533,11 @@ const CloutClosetLanding = () => {
 
               {/* Content with higher z-index */}
               <div className="relative z-10">
-                <h2 className="text-xl sm:text-3xl font-light mb-2 sm:mb-4 text-[#F5F2EF]">
+                <h2 className="text-xl sm:text-3xl font-light mb-1 sm:mb-2 text-[#F5F2EF]">
                   Join the Waitlist
                 </h2>
                 <p className="text-[#c7c4c1] mb-6 sm:mb-8 text-sm sm:text-lg font-light px-2 sm:px-3">
-                  Get early access when we launch in September
+                  Get early access + be notified when we go live.
                 </p>
 
                 <div className="max-w-sm sm:max-w-md mx-auto">
@@ -594,7 +593,7 @@ const CloutClosetLanding = () => {
                     key={index}
                     className={`shadow-[5px_5px_10px_rgba(0,0,0,0.6)] relative w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden transition-all duration-500 ${
                       index === currentInfluencer
-                        ? "scale-110 opacity-100 ring-2 ring-[#ED9449]"
+                        ? "scale-110 opacity-100 "
                         : "scale-100 opacity-80"
                     }`}
                   >
